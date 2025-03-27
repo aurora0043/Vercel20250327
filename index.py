@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
-from datetime import datetime, timezone, timedelta
+from datetime import datetime
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    homepage = "<h1>陳琬昀Python網頁+8</h1>"
+    homepage = "<h1>陳琬昀Python網頁</h1>"
     homepage += "<a href=/mis>MIS</a><br>"
     homepage += "<a href=/today>顯示日期時間</a><br>"
     homepage += "<a href=/welcome?nick=yun>傳送使用者暱稱</a><br>"
@@ -19,8 +19,7 @@ def course():
 
 @app.route("/today")
 def today():
-    tz = timezone(timedelta(hours =+ 8))
-	now = datetime.now(tz)
+	now = datetime.now()
 	return render_template("today.html", datetime = str(now))
 
 @app.route("/about")
